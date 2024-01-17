@@ -1,0 +1,6 @@
+@eSusInsurers_HostAddress = http://localhost:5195
+
+GET {{eSusInsurers_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

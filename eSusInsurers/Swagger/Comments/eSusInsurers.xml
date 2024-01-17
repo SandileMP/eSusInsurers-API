@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>eSusInsurers</name>
+    </assembly>
+    <members>
+        <member name="T:eSusInsurers.Common.EnvironmentVariablesHelper">
+            <summary>
+            Helper class for managing environment variables and configuration.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Common.EnvironmentVariablesHelper.AddEnvironmentVariables(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Adds environment variables and configuration to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add the services to.</param>
+            <param name="env">The web host environment.</param>
+            <returns>The modified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:eSusInsurers.Common.EnvironmentVariablesHelper.GetEnvironment">
+            <summary>
+            Gets the environment name from the ASPNETCORE_ENVIRONMENT environment variable.
+            </summary>
+            <returns>The environment name.</returns> 
+        </member>
+        <member name="T:eSusInsurers.ConfigServices.CustomNamingPolicy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.ConfigServices.CustomNamingPolicy.ConvertName(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:eSusInsurers.ConfigServices.SerializerHelpers">
+            <summary>
+            Helper class for Serializer Helpers.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.ConfigServices.SerializerHelpers.AddSerializerConfiguration(Microsoft.Extensions.DependencyInjection.IMvcBuilder)">
+            <summary>
+            Adds serializer configuration to the MVC builder.
+            </summary>
+            <param name="mvcBuilder">The MVC builder.</param>
+            <returns>The updated MVC builder.</returns>
+        </member>
+        <member name="T:eSusInsurers.ConfigServices.SwaggerHelper">
+            <summary>
+            Helper class for Swagger configuration.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.ConfigServices.SwaggerHelper.AddSwaggerConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds Swagger configuration to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add Swagger configuration to.</param>
+            <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="T:eSusInsurers.Controllers.InsuranceProviderController">
+            <summary>
+            Controller for managing insurance providers.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Controllers.InsuranceProviderController.CreateInsuranceProvider(eSusInsurers.Models.CreateInsuranceProviderRequest)">
+            <summary>
+            Create insurance provider
+            </summary>
+            <remarks>
+            Creates a new insurance provider.
+            </remarks>
+            <param name="request">Information of the insurance provider to be created.</param>
+            <response code="201">Indicates the insurance provider was successfully created.</response>
+        </member>
+        <member name="T:eSusInsurers.Extensions.JsonSerializationExtensions">
+            <summary>
+            Policy for converting Json.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Extensions.JsonSerializationExtensions.ToSnakeCase``1(``0)">
+            <summary>
+            Converter to snake casing convention.
+            </summary>
+            <param name="instance">input to convert</param>
+            <returns>snake_case format of input</returns>
+        </member>
+        <member name="M:eSusInsurers.Extensions.JsonSerializationExtensions.ToSnakeCase(System.String)">
+            <summary>
+            Converter to snake casing convention.
+            </summary>
+            <param name="string">input to convert</param>
+            <returns>snake_case format of input</returns>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.InsuranceProviderName">
+            <summary>
+            The name of the insurance provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.ContactPersonName">
+            <summary>
+            The name of the contact person
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.ContactPersonMobileNumber">
+            <summary>
+            The mobile number of the contact person
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.ContactPersonAlternateContactNumber">
+            <summary>
+            The alternate mobile number of the contact person.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.ContactPersonEmailId">
+            <summary>
+            The email id of the contact person
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.ContactPersonAlternateEmailId">
+            <summary>
+            The alternate email id of the contact person
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.Country">
+            <summary>
+            The country of the service provider.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.CountryId">
+            <summary>
+            The country id of the country.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.HeadOfficeAddress">
+            <summary>
+            The head office address of service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.EmailId1">
+            <summary>
+            The email id of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.EmailId2">
+            <summary>
+            The alternate email id of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.ContactNumber1">
+            <summary>
+            The contact number of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.ContactNumber2">
+            <summary>
+            The alternate contact number of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.loggedInUser">
+            <summary>
+            The logged in user.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.InsuranceProviderFiles">
+            <summary>
+            The file details of service provider
+            </summary>
+        </member>
+        <member name="T:eSusInsurers.Models.CreateInsuranceProviderResponse">
+            <summary>
+            Represents the result of a newly created insurance provider.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderResponse.Success">
+            <summary>
+            Indicates whether the insurance provider was sucessfully created.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderResponse.FailureReason">
+            <summary>
+            The reason the insurance provider was not created.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.CreateInsuranceProviderResponse.InsuranceProviderId">
+            <summary>
+            The ID of the newly created part inventory
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviderFiles.DocumentName">
+            <summary>
+            The document name of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviderFiles.DocumentData">
+            <summary>
+            Document Data in Base 64
+            </summary>
+        </member>
+        <member name="T:eSusInsurers.Policy.SnakeCaseNamingPolicy">
+            <summary>
+            Policy for converting Pascal case fieldnames into snake naming(snake_case) convention.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Policy.SnakeCaseNamingPolicy.ConvertName(System.String)">
+            <summary>
+            Convert Pascal naming using snake_case using snake casing convention.
+            </summary>
+            <param name="name">input to convert</param>
+            <returns>snake_case format of input</returns>
+        </member>
+        <member name="T:eSusInsurers.Swagger.OperationFilters.ParametersOperationFilter">
+            <summary>
+            To Map the input parameters
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Swagger.OperationFilters.ParametersOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            To apply the mappings
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+    </members>
+</doc>
