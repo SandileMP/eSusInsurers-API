@@ -1,14 +1,12 @@
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using AzureIntegrations.API;
-using eSusInsurers.Common;
-using eSusInsurers.Domain.Models;
-using eSusInsurers.Infrastructure.Common;
-using eSusInsurers.Policy;
-using eSusInsurers.Services.Implementations;
-using eSusInsurers.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using eSusFarmInternal.API;
+using eSusInsurers;
+using eSusInsurers.ConfigServices;
+using eSusInsurers.Infrastructure;
+using eSusInsurers.Options;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,8 +17,12 @@ var _env = builder.Environment;
 // Add services to the container.
 
 var configuration = builder.Services.AddEnvironmentVariables(_env);
-builder.Services.AddAzureIntegrationServices(configuration);
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+builder.Services.AddWebApiServices(configuration)
+                .AddApplicationServices(configuration)
+                .AddInfrastructureServices(configuration, _env)  
+                .AddAzureIntegrationServices(configuration)
+                .AddeSusFarmInternalServices(configuration);
 
 var apiVersioningBuilder = builder.Services.AddApiVersioning(config =>
 {
@@ -38,26 +40,9 @@ apiVersioningBuilder.AddApiExplorer(options =>
     options.GroupNameFormat = "'v'VVV";
 });
 
-builder.Services.AddControllers()
-                .AddJsonOptions(x =>
-                {
-                    x.JsonSerializerOptions.PropertyNamingPolicy = new SnakeCaseNamingPolicy();
-                });
+builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddTransient(typeof(IInsuranceProviderService), typeof(InsuranceProviderService));
-//builder.Services.AddScoped(typeof(IInsuranceProviderDocumentRepository), typeof(InsuranceProviderDocumentRepository));
-//builder.Services.AddScoped(typeof(IInsuranceProviderRepository), typeof(InsuranceProviderRepository));
-
-//Database
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(ILoggerContext<>), typeof(LoggerContext<>));
-
-builder.Services.AddDbContext<esusinsurer_nonprodContext>(
-               x => x.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
+builder.Services.AddSwaggerExamplesFromAssemblies(typeof(Program).Assembly);
 
 var app = builder.Build();
 

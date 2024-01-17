@@ -40,8 +40,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eSusInsurers.Infrastructure\eSusInsurers.Infrastructure\eSusInsurers.Infrastructure.csproj" />
-    <ProjectReference Include="..\ExternalIntegrations\AzureIntegrations.API\AzureIntegrations.API\AzureIntegrations.API.csproj" />
+    <ProjectReference Include="..\eSusInsurers.Infrastructure\eSusInsurers.Infrastructure.csproj" />
+    <ProjectReference Include="..\ExternalIntegrations\AzureIntegrations.API\AzureIntegrations.API.csproj" />
+    <ProjectReference Include="..\ExternalIntegrations\eSusFarmInternal.API\eSusFarmInternal.API.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace eSusInsurers.Common
+namespace eSusInsurers.Common.Mappings
 {
     public interface IMapFrom<T>
     {

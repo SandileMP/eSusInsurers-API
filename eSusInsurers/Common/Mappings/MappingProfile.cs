@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Reflection;
 
-namespace eSusInsurers.Common
+namespace eSusInsurers.Common.Mappings
 {
     public class MappingProfile : Profile
     {

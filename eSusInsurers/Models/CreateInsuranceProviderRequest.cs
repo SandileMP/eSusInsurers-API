@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
-using eSusInsurers.Common;
+using eSusInsurers.Common.Mappings;
 using eSusInsurers.Domain.Entities;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace eSusInsurers.Models
 {
+    /// <summary>
+    /// CreateInsuranceProviderRequest
+    /// </summary>
     public class CreateInsuranceProviderRequest : IMapFrom<InsuranceProvider>, IExamplesProvider<CreateInsuranceProviderRequest>
     {
         /// <summary>
@@ -35,7 +38,7 @@ namespace eSusInsurers.Models
         /// <summary>
         /// The alternate email id of the contact person
         /// </summary>
-        public string ContactPersonAlternateEmailId { get; set; } = default!;
+        public string? ContactPersonAlternateEmailId { get; set; } = default!;
 
         /// <summary>
         /// The country of the service provider.
@@ -55,12 +58,12 @@ namespace eSusInsurers.Models
         /// <summary>
         /// The email id of the service provider
         /// </summary>
-        public string EmailId1 { get; set; }
+        public string EmailId1 { get; set; } = default!;
 
         /// <summary>
         /// The alternate email id of the service provider
         /// </summary>
-        public string EmailId2 { get; set; }
+        public string? EmailId2 { get; set; } = default!;
 
         /// <summary>
         /// The contact number of the service provider
@@ -75,21 +78,29 @@ namespace eSusInsurers.Models
         /// <summary>
         /// The logged in user.
         /// </summary>
-        public string loggedInUser { get; set; }
+        public string loggedInUser { get; set; } = default!;
 
         /// <summary>
         /// The file details of service provider
         /// </summary>
         public ICollection<InsuranceProviderFiles>? InsuranceProviderFiles { get; set; }
 
+        /// <summary>
+        /// Mapping
+        /// </summary>
+        /// <param name="profile"></param>
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateInsuranceProviderRequest, InsuranceProvider>()
                 .ForMember(dest => dest.IsActive, opts => opts.MapFrom(src => true))
                 .ForMember(dest => dest.InsurerName, opts => opts.MapFrom(src => src.InsuranceProviderName))
-                .ForMember(dest => dest.CreatedBy, opts => opts.MapFrom(src => "test"));
+                .ForMember(dest => dest.CreatedBy, opts => opts.MapFrom(src => src.loggedInUser));
         }
 
+        /// <summary>
+        /// Example
+        /// </summary>
+        /// <returns></returns>
         public CreateInsuranceProviderRequest GetExamples()
         {
             return new CreateInsuranceProviderRequest()
@@ -103,13 +114,13 @@ namespace eSusInsurers.Models
                 ContactNumber1 = 243543545,
                 HeadOfficeAddress = "test",
                 InsuranceProviderName = "test",
+                loggedInUser = "test",
                 InsuranceProviderFiles = new List<InsuranceProviderFiles>()
                 {
                     new InsuranceProviderFiles()
                     {
                         DocumentData = "abcdefdadsf",
-                        DocumentName = "test",
-
+                        DocumentName = "test"
                     }
                 }
             };

@@ -5,13 +5,21 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers", "eSusInsurers\eSusInsurers.csproj", "{2361C43D-F4E0-48D8-A2FA-3EBD41542B30}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers.Domain", "eSusInsurers.Domain\eSusInsurers.Domain\eSusInsurers.Domain.csproj", "{DB93990D-38E4-434A-B215-C4E90DE210F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers.Domain", "eSusInsurers.Domain\eSusInsurers.Domain.csproj", "{DB93990D-38E4-434A-B215-C4E90DE210F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers.Infrastructure", "eSusInsurers.Infrastructure\eSusInsurers.Infrastructure\eSusInsurers.Infrastructure.csproj", "{EFB5685B-FA8A-46D1-AED0-990DFE491A3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers.Infrastructure", "eSusInsurers.Infrastructure\eSusInsurers.Infrastructure.csproj", "{EFB5685B-FA8A-46D1-AED0-990DFE491A3B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalIntegrations", "ExternalIntegrations", "{4435653D-63AA-4068-B531-584CE6ED4CF9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureIntegrations.API", "ExternalIntegrations\AzureIntegrations.API\AzureIntegrations.API\AzureIntegrations.API.csproj", "{DB00A12A-931D-494E-948C-8FE5640DB61B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureIntegrations.API", "ExternalIntegrations\AzureIntegrations.API\AzureIntegrations.API.csproj", "{DB00A12A-931D-494E-948C-8FE5640DB61B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusFarmInternal.API", "ExternalIntegrations\eSusFarmInternal.API\eSusFarmInternal.API.csproj", "{5427A265-BBB5-4A91-8E90-412B61742B53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8A1D4174-9EC1-41F0-91EB-88C4AC0E83DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers.Infrastructure.Tests", "Tests\eSusInsurers.Infrastructure.Tests\eSusInsurers.Infrastructure.Tests.csproj", "{D153529F-488A-4913-BAA4-2420BD1354DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers.Tests", "Tests\eSusInsurers.Tests\eSusInsurers.Tests.csproj", "{D1166486-081D-46FE-B3BE-20474ED85073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,12 +43,27 @@ Global
 		{DB00A12A-931D-494E-948C-8FE5640DB61B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB00A12A-931D-494E-948C-8FE5640DB61B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB00A12A-931D-494E-948C-8FE5640DB61B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5427A265-BBB5-4A91-8E90-412B61742B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5427A265-BBB5-4A91-8E90-412B61742B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5427A265-BBB5-4A91-8E90-412B61742B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5427A265-BBB5-4A91-8E90-412B61742B53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D153529F-488A-4913-BAA4-2420BD1354DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D153529F-488A-4913-BAA4-2420BD1354DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D153529F-488A-4913-BAA4-2420BD1354DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D153529F-488A-4913-BAA4-2420BD1354DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1166486-081D-46FE-B3BE-20474ED85073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1166486-081D-46FE-B3BE-20474ED85073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1166486-081D-46FE-B3BE-20474ED85073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1166486-081D-46FE-B3BE-20474ED85073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DB00A12A-931D-494E-948C-8FE5640DB61B} = {4435653D-63AA-4068-B531-584CE6ED4CF9}
+		{5427A265-BBB5-4A91-8E90-412B61742B53} = {4435653D-63AA-4068-B531-584CE6ED4CF9}
+		{D153529F-488A-4913-BAA4-2420BD1354DB} = {8A1D4174-9EC1-41F0-91EB-88C4AC0E83DE}
+		{D1166486-081D-46FE-B3BE-20474ED85073} = {8A1D4174-9EC1-41F0-91EB-88C4AC0E83DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2D33CC4-7A28-4F8C-BCCE-79D6B23F8B91}

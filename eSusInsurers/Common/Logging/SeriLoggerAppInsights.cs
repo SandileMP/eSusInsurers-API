@@ -1,6 +1,6 @@
 ﻿using ILogger = Serilog.ILogger;
 
-namespace eSusInsurers.Common
+namespace eSusInsurers.Common.Logging
 {
     public static class SeriLoggerAppInsights
     {

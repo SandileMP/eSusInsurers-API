@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using AzureIntegrations.API.Interfaces;
 using AzureIntegrations.API.Models;
-using eSusInsurers.Common;
+using eSusFarmInternal.API.Interfaces;
+using eSusInsurers.Common.Logging;
+using eSusInsurers.Constants;
 using eSusInsurers.Domain.Entities;
 using eSusInsurers.Infrastructure.Common;
 using eSusInsurers.Models;
@@ -13,26 +15,30 @@ namespace eSusInsurers.Services.Implementations
     {
         public IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        //private readonly IInternaleSusFarmService _internaleSusFarmService;
+        private readonly IInternaleSusFarmService _internaleSusFarmService;
         private readonly IAzureFileStorageConnection _azureFileStorageConnection;
         private readonly ILoggerContext<InsuranceProvider> _logger;
 
 
 
-        public InsuranceProviderService(IUnitOfWork unitOfWork, IMapper mapper, IAzureFileStorageConnection azureFileStorageConnection, ILoggerContext<InsuranceProvider> logger)
+        public InsuranceProviderService(IUnitOfWork unitOfWork
+                                      , IMapper mapper
+                                      , IAzureFileStorageConnection azureFileStorageConnection
+                                      , ILoggerContext<InsuranceProvider> logger
+                                      , IInternaleSusFarmService internaleSusFarmService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            //_internaleSusFarmService = internaleSusFarmService;
             _azureFileStorageConnection = azureFileStorageConnection;
             _logger = logger;
+            _internaleSusFarmService = internaleSusFarmService;
         }
 
         public async Task<CreateInsuranceProviderResponse> CreateInuranceProvider(CreateInsuranceProviderRequest request, CancellationToken cancellationToken)
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
 
-            //var getprovinces = await _internaleSusFarmService.GetProvinceSummary(cancellationToken);
+            var getprovinces = await _internaleSusFarmService.GetProvinceSummary(cancellationToken);
 
             var insuranceProvider = _mapper.Map<InsuranceProvider>(request);
             insuranceProvider.CreatedDate = insuranceProvider.ModifiedDate = DateTime.UtcNow;
@@ -68,7 +74,7 @@ namespace eSusInsurers.Services.Implementations
             }
             catch (Exception ex)
             {
-                await _logger.LogErrorAsync(insuranceProvider, ex, "An error", cancellationToken);
+                await _logger.LogErrorAsync(insuranceProvider, ex, ApplicationConstants.CommorError, cancellationToken);
 
                 await transaction.RollbackAsync(cancellationToken);
 
@@ -95,7 +101,7 @@ namespace eSusInsurers.Services.Implementations
                         AzureDocument document = new AzureDocument();
                         document.DocumentName = $"{insuranceProviderId}_{file.DocumentName}";
                         document.DocumentData = Convert.FromBase64String(file.DocumentData);
-                        document.MainDirectory = "InsuranceProviderDocuments";
+                        document.MainDirectory = ApplicationConstants.AzureMainDirectory;
                         document.ChildDirectory = insuranceProviderId.ToString();
 
                         var documentPath = await _azureFileStorageConnection.UploadInsuranceProviderFiles(document);

@@ -7,17 +7,16 @@ namespace eSusInsurers.Controllers
     /// <summary>
     /// Controller for managing insurance providers.
     /// </summary>
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status403Forbidden)]
-    [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("insurance/insurers")]
-    public class InsuranceProviderController : ControllerBase
+    public class InsuranceProviderController : BaseController
     {
         private readonly IInsuranceProviderService _insuranceProviderService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InsuranceProviderController"/> class.
+        /// </summary>
+        /// <param name="insuranceProviderService">The instance of insurance provider service.</param>
         public InsuranceProviderController(IInsuranceProviderService insuranceProviderService)
         {
             _insuranceProviderService = insuranceProviderService;

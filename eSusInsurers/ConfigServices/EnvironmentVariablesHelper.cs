@@ -1,4 +1,6 @@
-﻿namespace eSusInsurers.Common
+﻿using eSusInsurers.ConfigServices;
+
+namespace eSusInsurers.ConfigServices
 {
     /// <summary>
     /// Helper class for managing environment variables and configuration.

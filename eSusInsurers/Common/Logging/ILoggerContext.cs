@@ -1,4 +1,4 @@
-﻿namespace eSusInsurers.Common
+﻿namespace eSusInsurers.Common.Logging
 {
     public interface ILoggerContext<TRequest>
     {

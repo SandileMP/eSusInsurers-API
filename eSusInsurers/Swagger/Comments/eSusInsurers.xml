@@ -4,24 +4,18 @@
         <name>eSusInsurers</name>
     </assembly>
     <members>
-        <member name="T:eSusInsurers.Common.EnvironmentVariablesHelper">
+        <member name="T:eSusInsurers.ConfigServices.ControllerHelper">
             <summary>
-            Helper class for managing environment variables and configuration.
+            Helper class for configuring controller-related services.
             </summary>
         </member>
-        <member name="M:eSusInsurers.Common.EnvironmentVariablesHelper.AddEnvironmentVariables(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:eSusInsurers.ConfigServices.ControllerHelper.AddControllerServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Adds environment variables and configuration to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            Adds controller-related services to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
             </summary>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add the services to.</param>
-            <param name="env">The web host environment.</param>
+            <param name="configuration">The configuration.</param>
             <returns>The modified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
-        </member>
-        <member name="M:eSusInsurers.Common.EnvironmentVariablesHelper.GetEnvironment">
-            <summary>
-            Gets the environment name from the ASPNETCORE_ENVIRONMENT environment variable.
-            </summary>
-            <returns>The environment name.</returns> 
         </member>
         <member name="T:eSusInsurers.ConfigServices.CustomNamingPolicy">
             <summary>
@@ -34,6 +28,25 @@
             </summary>
             <param name="name"></param>
             <returns></returns>
+        </member>
+        <member name="T:eSusInsurers.ConfigServices.EnvironmentVariablesHelper">
+            <summary>
+            Helper class for managing environment variables and configuration.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.ConfigServices.EnvironmentVariablesHelper.AddEnvironmentVariables(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Adds environment variables and configuration to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add the services to.</param>
+            <param name="env">The web host environment.</param>
+            <returns>The modified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:eSusInsurers.ConfigServices.EnvironmentVariablesHelper.GetEnvironment">
+            <summary>
+            Gets the environment name from the ASPNETCORE_ENVIRONMENT environment variable.
+            </summary>
+            <returns>The environment name.</returns> 
         </member>
         <member name="T:eSusInsurers.ConfigServices.SerializerHelpers">
             <summary>
@@ -59,10 +72,34 @@
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add Swagger configuration to.</param>
             <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
         </member>
+        <member name="T:eSusInsurers.ConfigureServices">
+            <summary>
+            Configures the services for WebApi
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.ConfigureServices.AddWebApiServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add the services in the Service Collection
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eSusInsurers.ConfigureServices.AddApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configures the services for ApplicationServices
+            </summary>
+        </member>
         <member name="T:eSusInsurers.Controllers.InsuranceProviderController">
             <summary>
             Controller for managing insurance providers.
             </summary>
+        </member>
+        <member name="M:eSusInsurers.Controllers.InsuranceProviderController.#ctor(eSusInsurers.Services.Interfaces.IInsuranceProviderService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:eSusInsurers.Controllers.InsuranceProviderController"/> class.
+            </summary>
+            <param name="insuranceProviderService">The instance of insurance provider service.</param>
         </member>
         <member name="M:eSusInsurers.Controllers.InsuranceProviderController.CreateInsuranceProvider(eSusInsurers.Models.CreateInsuranceProviderRequest)">
             <summary>
@@ -92,6 +129,27 @@
             </summary>
             <param name="string">input to convert</param>
             <returns>snake_case format of input</returns>
+        </member>
+        <member name="T:eSusInsurers.Filter.ApiExceptionFilterAttribute">
+            <summary>
+            Represents an exception filter attribute that handles and processes exceptions in an API.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Filter.ApiExceptionFilterAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:eSusInsurers.Filter.ApiExceptionFilterAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Filter.ApiExceptionFilterAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            Called when an exception occurs during the execution of an action.
+            </summary>
+            <param name="context">The exception context.</param>
+        </member>
+        <member name="T:eSusInsurers.Models.CreateInsuranceProviderRequest">
+            <summary>
+            CreateInsuranceProviderRequest
+            </summary>
         </member>
         <member name="P:eSusInsurers.Models.CreateInsuranceProviderRequest.InsuranceProviderName">
             <summary>
@@ -167,6 +225,18 @@
             <summary>
             The file details of service provider
             </summary>
+        </member>
+        <member name="M:eSusInsurers.Models.CreateInsuranceProviderRequest.Mapping(AutoMapper.Profile)">
+            <summary>
+            Mapping
+            </summary>
+            <param name="profile"></param>
+        </member>
+        <member name="M:eSusInsurers.Models.CreateInsuranceProviderRequest.GetExamples">
+            <summary>
+            Example
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:eSusInsurers.Models.CreateInsuranceProviderResponse">
             <summary>
