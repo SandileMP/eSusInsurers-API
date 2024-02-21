@@ -34,13 +34,14 @@ namespace eSusInsurers.Services.Implementations
             _internaleSusFarmService = internaleSusFarmService;
         }
 
-        public async Task<CreateInsuranceProviderResponse> CreateInuranceProvider(CreateInsuranceProviderRequest request, CancellationToken cancellationToken)
+        public async Task<CreateInsuranceProviderResponse> CreateInsuranceProvider(CreateInsuranceProviderRequest request, CancellationToken cancellationToken)
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
 
             var getprovinces = await _internaleSusFarmService.GetProvinceSummary(cancellationToken);
 
             var insuranceProvider = _mapper.Map<InsuranceProvider>(request);
+
             insuranceProvider.CreatedDate = insuranceProvider.ModifiedDate = DateTime.UtcNow;
 
             using var transaction = _unitOfWork.BeginTransaction();

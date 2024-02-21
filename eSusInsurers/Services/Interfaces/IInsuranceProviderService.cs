@@ -4,6 +4,6 @@ namespace eSusInsurers.Services.Interfaces
 {
     public interface IInsuranceProviderService
     {
-        Task<CreateInsuranceProviderResponse> CreateInuranceProvider(CreateInsuranceProviderRequest request, CancellationToken cancellationToken);
+        Task<CreateInsuranceProviderResponse> CreateInsuranceProvider(CreateInsuranceProviderRequest request, CancellationToken cancellationToken);
     }
 }

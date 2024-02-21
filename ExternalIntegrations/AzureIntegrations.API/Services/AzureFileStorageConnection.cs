@@ -103,6 +103,7 @@ namespace AzureIntegrations.API.Services
             {
                 string documentPath = string.Empty;
 
+                file.Properties.ContentType = "image/jpg";
                 if (await file.ExistsAsync())
                 {
                     using (MemoryStream ms = new MemoryStream(documentData))

@@ -21,6 +21,7 @@ namespace eSusInsurers.Controllers
         {
             _insuranceProviderService = insuranceProviderService;
         }
+
         /// <summary>
         /// Create insurance provider
         /// </summary>
@@ -34,7 +35,7 @@ namespace eSusInsurers.Controllers
         public async Task<ActionResult<CreateInsuranceProviderResponse>> CreateInsuranceProvider(
             [FromBody] CreateInsuranceProviderRequest request)
         {
-            var result = await _insuranceProviderService.CreateInuranceProvider(request, new CancellationToken());
+            var result = await _insuranceProviderService.CreateInsuranceProvider(request, new CancellationToken());
 
             return new ObjectResult(result) { StatusCode = StatusCodes.Status201Created };
         }
