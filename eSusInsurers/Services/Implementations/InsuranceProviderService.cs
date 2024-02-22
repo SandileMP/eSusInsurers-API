@@ -57,6 +57,7 @@ namespace eSusInsurers.Services.Implementations
                 {
                     var insuranceProviderDocuments = await UploadInsuranceProviderFiles(request.InsuranceProviderFiles.ToList(), insuranceProvider.Id);
 
+
                     if (insuranceProviderDocuments.Count > 0)
                     {
                         await _unitOfWork.InsuranceProviderDocumentRepository.AddRangeAsync(insuranceProviderDocuments, cancellationToken);
@@ -114,6 +115,7 @@ namespace eSusInsurers.Services.Implementations
                             insuranceProviderDocument.DocumentName = file.DocumentName;
                             insuranceProviderDocument.DocumentPath = documentPath;
                             insuranceProviderDocument.IsActive = true;
+                            insuranceProviderDocument.CreatedDate = insuranceProviderDocument.ModifiedDate = DateTime.UtcNow;
 
                             insuranceProviderDocuments.Add(insuranceProviderDocument);
                         }
