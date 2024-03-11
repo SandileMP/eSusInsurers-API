@@ -29,6 +29,7 @@ Version supported:
 * .NET Core 8.0
 * 8.0 SDK or later
 * Visual Studio 2022 or later
+* Visual Studio Code
 
 # .NET Core API Configuration
 You should just be able to clone this repo as is on either Windows or Mac (and probably Linux) and do:
