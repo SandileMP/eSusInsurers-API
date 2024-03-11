@@ -18,7 +18,6 @@
 # ASP.NET Core Features
 * Creating an API backend service
 * Isolating business logic and Controller code
-* Using a base Repository for business logic
 * Separating code into separate projects
 * Custom User Authentication
 * CORS Support
