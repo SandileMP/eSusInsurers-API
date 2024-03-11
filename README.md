@@ -21,7 +21,7 @@
 * Separating code into separate projects
 * Custom User Authentication
 * CORS Support
-* Using ASP.NET Core as a backend to an Angular 2.0 front end
+* Using ASP.NET Core as a backend to an Angular 17.0 front end
 
 Version supported:
 
