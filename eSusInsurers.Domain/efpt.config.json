@@ -5,22 +5,278 @@
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
    "IncludeConnectionString": false,
-   "ModelNamespace": "EntityTypeConfigurations",
+   "ModelNamespace": "",
    "OutputContextPath": null,
-   "OutputPath": "Models",
+   "OutputPath": "Entities",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "eSusInsurers.Domain",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 2,
-   "SelectedToBeGenerated": 1,
+   "SelectedToBeGenerated": 0,
    "T4TemplatePath": null,
    "Tables": [
+      {
+         "Name": "[dbo].[AppEvents]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AppEvents_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Claims]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Claims_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Countries]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Countries_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CropCategories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CropCategories_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CropInsurance]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CropInsurance_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CropInsurancePremiums]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CropInsurancePremiums_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Crops]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Crops_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Districts]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Districts_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EmailTemplates]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EmailTemplates_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FarmerCrops]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FarmerCrops_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Farmers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Farmers_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Features]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Features_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Functionalities]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Functionalities_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsurancePolicies]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsurancePolicies_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsurancePremium]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsurancePremium_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsurancePremiumFrequency]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsurancePremiumFrequency_AU]",
+         "ObjectType": 0
+      },
       {
          "Name": "[dbo].[InsuranceProviderDocuments]",
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[InsuranceProviderDocuments_AU]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[InsuranceProviders]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsuranceProviders_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsuranceRisk]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsuranceRisk_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsurerUsers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InsurerUsers_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Locations]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Locations_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PaymentModes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PaymentModes_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PremiumPayments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PremiumPayments_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Regions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Regions_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RoleFeatures]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RoleFeatures_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Roles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Roles_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SeasonPhases]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SeasonPhases_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Seasons]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Seasons_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SubCounties]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SubCounties_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SubFunctionalities]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SubFunctionalities_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaxComponents]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaxComponents_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Users]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Users_AU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserTypes_AU]",
          "ObjectType": 0
       }
    ],
@@ -42,6 +298,7 @@
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
    "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
    "UseSchemaFolders": false,
    "UseSchemaNamespaces": false,
    "UseSpatial": false,

@@ -101,7 +101,7 @@
             </summary>
             <param name="insuranceProviderService">The instance of insurance provider service.</param>
         </member>
-        <member name="M:eSusInsurers.Controllers.InsuranceProviderController.CreateInsuranceProvider(eSusInsurers.Models.CreateInsuranceProviderRequest)">
+        <member name="M:eSusInsurers.Controllers.InsuranceProviderController.CreateInsuranceProvider(eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest)">
             <summary>
             Create insurance provider
             </summary>
@@ -110,6 +110,108 @@
             </remarks>
             <param name="request">Information of the insurance provider to be created.</param>
             <response code="201">Indicates the insurance provider was successfully created.</response>
+        </member>
+        <member name="T:eSusInsurers.Controllers.TokenController">
+            <summary>
+            User Token Management
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Controllers.TokenController.Refresh(eSusInsurers.Models.Users.RefreshAccessToken.TokenApiModel)">
+            <summary>
+            Refresh Access Token
+            </summary>
+            <remarks>
+            Refresh Access Token
+            </remarks>
+            <param name="tokenApiModel">Information of the user access token and refresh token</param>
+            <response code="200">Indicates the user token refreshed successfully.</response>
+        </member>
+        <member name="M:eSusInsurers.Controllers.TokenController.Revoke">
+            <summary>
+            Refresh Access Token
+            </summary>
+            <remarks>
+            Refresh Access Token
+            </remarks>
+            <param name="tokenApiModel">Information of the user access token and refresh token</param>
+            <response code="200">Indicates the refresh token is revoked.</response>
+        </member>
+        <member name="T:eSusInsurers.Controllers.UserController">
+            <summary>
+            Controller for managing users.
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Controllers.UserController.Register(eSusInsurers.Models.UserRegisterRequest)">
+            <summary>
+            User Registration
+            </summary>
+            <remarks>
+            User Registration
+            </remarks>
+            <param name="request">Information of the user to register</param>
+            <response code="201">Indicates the user is successfully created.</response>
+        </member>
+        <member name="M:eSusInsurers.Controllers.UserController.CheckUsername(System.String)">
+            <summary>
+            User name existence
+            </summary>
+            <remarks>
+            User name existence
+            </remarks>
+            <param name="userName">To check whether user name exists or not</param>
+            <response code="200">Indicates the user existance.</response>
+        </member>
+        <member name="M:eSusInsurers.Controllers.UserController.SendOtp(System.String)">
+            <summary>
+            Send Otp to user
+            </summary>
+            <remarks>
+            Send Otp to user
+            </remarks>
+            <param name="userName">Send otp to the userName</param>
+            <response code="200">Indicates the otp has been successsful.</response>
+        </member>
+        <member name="M:eSusInsurers.Controllers.UserController.ConfirmOtp(System.String,System.String)">
+            <summary>
+            Confirm Otp of user
+            </summary>
+            <remarks>
+            COnfirm Otp od user
+            </remarks>
+            <param name="userName">userName of the user</param>
+            <param name="otp">Otp sent to the userName</param>
+            <response code="200">Indicates the otp has been confirmed.</response>
+        </member>
+        <member name="M:eSusInsurers.Controllers.UserController.UpdatePassword(System.String,eSusInsurers.Models.Users.UpdatePassword.UpdatePasswordRequest)">
+            <summary>
+            Update user password after confirmation of otp
+            </summary>
+            <remarks>
+            Update user password after confirmation of otp
+            </remarks>
+            <param name="userName">userName of the user</param>
+            <param name="updatePasswordRequest">request for the update password</param>
+            <response code="200">Indicates the otp has been updated successfully.</response>
+        </member>
+        <member name="M:eSusInsurers.Controllers.UserController.Login(eSusInsurers.Models.Users.Login.LoginRequest)">
+            <summary>
+            User Login
+            </summary>
+            <remarks>
+            User Login
+            </remarks>
+            <param name="request">Information of the user to login</param>
+            <response code="200">Indicates the user successful login.</response>
+        </member>
+        <member name="M:eSusInsurers.Controllers.UserController.ChangePassword(eSusInsurers.Models.Users.ChangePassword.ChangePasswordRequest)">
+            <summary>
+            Change Password
+            </summary>
+            <remarks>
+            Change Password
+            </remarks>
+            <param name="request">Information of the user to change password</param>
+            <response code="200">Indicates the user password is successfully updated.</response>
         </member>
         <member name="T:eSusInsurers.Extensions.JsonSerializationExtensions">
             <summary>
@@ -264,6 +366,128 @@
             </summary>
         </member>
         <member name="P:eSusInsurers.Models.InsuranceProviderFiles.DocumentData">
+            <summary>
+            Document Data in Base 64
+            </summary>
+        </member>
+        <member name="T:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest">
+            <summary>
+            CreateInsuranceProviderRequest
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.InsuranceProviderName">
+            <summary>
+            The name of the insurance provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.ContactPersonName">
+            <summary>
+            The name of the contact person
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.ContactPersonMobileNumber">
+            <summary>
+            The mobile number of the contact person
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.ContactPersonAlternateContactNumber">
+            <summary>
+            The alternate mobile number of the contact person.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.ContactPersonEmailId">
+            <summary>
+            The email id of the contact person
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.ContactPersonAlternateEmailId">
+            <summary>
+            The alternate email id of the contact person
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.Country">
+            <summary>
+            The country of the service provider.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.CountryId">
+            <summary>
+            The country id of the country.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.HeadOfficeAddress">
+            <summary>
+            The head office address of service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.EmailId1">
+            <summary>
+            The email id of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.EmailId2">
+            <summary>
+            The alternate email id of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.ContactNumber1">
+            <summary>
+            The contact number of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.ContactNumber2">
+            <summary>
+            The alternate contact number of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.loggedInUser">
+            <summary>
+            The logged in user.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.InsuranceProviderFiles">
+            <summary>
+            The file details of service provider
+            </summary>
+        </member>
+        <member name="M:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.Mapping(AutoMapper.Profile)">
+            <summary>
+            Mapping
+            </summary>
+            <param name="profile"></param>
+        </member>
+        <member name="M:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderRequest.GetExamples">
+            <summary>
+            Example
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderResponse">
+            <summary>
+            Represents the result of a newly created insurance provider.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderResponse.Success">
+            <summary>
+            Indicates whether the insurance provider was sucessfully created.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderResponse.FailureReason">
+            <summary>
+            The reason the insurance provider was not created.
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.CreateInsuranceProviderResponse.InsuranceProviderId">
+            <summary>
+            The ID of the newly created part inventory
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.InsuranceProviderFiles.DocumentName">
+            <summary>
+            The document name of the service provider
+            </summary>
+        </member>
+        <member name="P:eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider.InsuranceProviderFiles.DocumentData">
             <summary>
             Document Data in Base 64
             </summary>

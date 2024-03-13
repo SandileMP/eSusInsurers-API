@@ -2,15 +2,21 @@
 using eSusInsurers.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
 
-namespace eSusInsurers.Domain.Models.Configurations
+namespace eSusInsurers.Domain.Entities.Configurations
 {
     public partial class InsuranceProviderConfiguration : IEntityTypeConfiguration<InsuranceProvider>
     {
         public void Configure(EntityTypeBuilder<InsuranceProvider> entity)
         {
-            entity.Property(e => e.Id).HasColumnName("InsurerId");
-            entity.HasKey(e => e.Id).HasName("PK__eSusInsu__7E508CE6AF228DD5");
+            entity.Property(x => x.Id)
+                            .HasColumnName("InsurerId");
+
+            entity.HasKey(e => e.Id).HasName("PK__Insuranc__7E508CE610302A5F");
+
+            entity.ToTable(tb => tb.HasTrigger("trigger_InsuranceProviders_AU"));
 
             entity.Property(e => e.Address).IsUnicode(false);
             entity.Property(e => e.Comments).IsUnicode(false);
@@ -18,59 +24,56 @@ namespace eSusInsurers.Domain.Models.Configurations
             entity.Property(e => e.ContactNumber2).HasColumnType("numeric(15, 0)");
             entity.Property(e => e.ContactPersonAlternateContactNumber).HasColumnType("numeric(15, 0)");
             entity.Property(e => e.ContactPersonAlternateEmailId)
-            .HasMaxLength(300)
-            .IsUnicode(false);
+                .HasMaxLength(300)
+                .IsUnicode(false);
             entity.Property(e => e.ContactPersonEmailId)
-            .IsRequired()
-            .HasMaxLength(300)
-            .IsUnicode(false);
+                .IsRequired()
+                .HasMaxLength(300)
+                .IsUnicode(false);
             entity.Property(e => e.ContactPersonMobileNumber).HasColumnType("numeric(15, 0)");
             entity.Property(e => e.ContactPersonName)
-            .IsRequired()
-            .HasMaxLength(200)
-            .IsUnicode(false);
-            entity.Property(e => e.Country)
-            .HasMaxLength(100)
-            .IsUnicode(false);
+                .IsRequired()
+                .HasMaxLength(200)
+                .IsUnicode(false);
             entity.Property(e => e.CreatedBy)
-            .HasMaxLength(100)
-            .IsUnicode(false);
+                .HasMaxLength(100)
+                .IsUnicode(false);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.EmailId1)
-            .IsRequired()
-            .HasMaxLength(300)
-            .IsUnicode(false);
+                .IsRequired()
+                .HasMaxLength(300)
+                .IsUnicode(false);
             entity.Property(e => e.EmailId2)
-            .HasMaxLength(300)
-            .IsUnicode(false);
+                .HasMaxLength(300)
+                .IsUnicode(false);
             entity.Property(e => e.HeadOfficeAddress)
-            .IsRequired()
-            .HasMaxLength(300)
-            .IsUnicode(false);
+                .IsRequired()
+                .HasMaxLength(300)
+                .IsUnicode(false);
             entity.Property(e => e.InsurerName)
-            .IsRequired()
-            .HasMaxLength(200)
-            .IsUnicode(false);
-            entity.Property(e => e.IsEnforcePassword).HasDefaultValue(true);
-            entity.Property(e => e.LastVersion)
-            .HasMaxLength(100)
-            .IsUnicode(false);
+                .IsRequired()
+                .HasMaxLength(200)
+                .IsUnicode(false);
             entity.Property(e => e.Latitude).HasColumnType("decimal(8, 6)");
+            entity.Property(e => e.Logo)
+                .HasMaxLength(250)
+                .IsUnicode(false);
             entity.Property(e => e.Longitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.ModifiedBy)
-            .HasMaxLength(100)
-            .IsUnicode(false);
+                .HasMaxLength(100)
+                .IsUnicode(false);
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
-            entity.Property(e => e.Password).IsUnicode(false);
-            entity.Property(e => e.ProfilePicture)
-            .HasMaxLength(250)
-            .IsUnicode(false);
             entity.Property(e => e.Status)
-            .HasMaxLength(50)
-            .IsUnicode(false);
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.TaxIdentificationNumber)
-            .HasMaxLength(100)
-            .IsUnicode(false);
+                .HasMaxLength(100)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Country).WithMany(p => p.InsuranceProviders)
+                .HasForeignKey(d => d.CountryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Countries");
 
             OnConfigurePartial(entity);
         }

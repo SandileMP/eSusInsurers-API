@@ -1,4 +1,4 @@
-﻿using eSusInsurers.Models;
+﻿using eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider;
 using eSusInsurers.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

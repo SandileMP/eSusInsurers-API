@@ -6,7 +6,7 @@ using eSusInsurers.Common.Logging;
 using eSusInsurers.Constants;
 using eSusInsurers.Domain.Entities;
 using eSusInsurers.Infrastructure.Common;
-using eSusInsurers.Models;
+using eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider;
 using eSusInsurers.Services.Interfaces;
 
 namespace eSusInsurers.Services.Implementations
@@ -38,11 +38,13 @@ namespace eSusInsurers.Services.Implementations
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));
 
-            var getprovinces = await _internaleSusFarmService.GetProvinceSummary(cancellationToken);
+            // var getprovinces = await _internaleSusFarmService.GetProvinceSummary(cancellationToken);
 
             var insuranceProvider = _mapper.Map<InsuranceProvider>(request);
 
-            insuranceProvider.CreatedDate = insuranceProvider.ModifiedDate = DateTime.UtcNow;
+            insuranceProvider.CreatedDate = DateTime.UtcNow;
+
+            insuranceProvider.ModifiedDate = DateTime.UtcNow;
 
             using var transaction = _unitOfWork.BeginTransaction();
 
@@ -55,8 +57,7 @@ namespace eSusInsurers.Services.Implementations
 
                 if (request.InsuranceProviderFiles?.Count() > 0)
                 {
-                    var insuranceProviderDocuments = await UploadInsuranceProviderFiles(request.InsuranceProviderFiles.ToList(), insuranceProvider.Id);
-
+                    var insuranceProviderDocuments = await UploadInsuranceProviderFiles(request.InsuranceProviderFiles.ToList(), insuranceProvider);
 
                     if (insuranceProviderDocuments.Count > 0)
                     {
@@ -88,7 +89,7 @@ namespace eSusInsurers.Services.Implementations
             }
         }
 
-        private async Task<List<InsuranceProviderDocument>> UploadInsuranceProviderFiles(List<InsuranceProviderFiles> InsuranceProviderFiles, int insuranceProviderId)
+        private async Task<List<InsuranceProviderDocument>> UploadInsuranceProviderFiles(List<InsuranceProviderFiles> InsuranceProviderFiles, InsuranceProvider insuranceProvider)
         {
 
             List<InsuranceProviderDocument> insuranceProviderDocuments = new List<InsuranceProviderDocument>();
@@ -101,21 +102,23 @@ namespace eSusInsurers.Services.Implementations
                     if (file.DocumentData != null)
                     {
                         AzureDocument document = new AzureDocument();
-                        document.DocumentName = $"{insuranceProviderId}_{file.DocumentName}";
+                        document.DocumentName = $"{insuranceProvider.Id}_{file.DocumentName}";
                         document.DocumentData = Convert.FromBase64String(file.DocumentData);
                         document.MainDirectory = ApplicationConstants.AzureMainDirectory;
-                        document.ChildDirectory = insuranceProviderId.ToString();
+                        document.ChildDirectory = insuranceProvider.Id.ToString();
 
                         var documentPath = await _azureFileStorageConnection.UploadInsuranceProviderFiles(document);
 
                         if (documentPath != null)
                         {
                             InsuranceProviderDocument insuranceProviderDocument = new InsuranceProviderDocument();
-                            insuranceProviderDocument.InsuranceProviderId = insuranceProviderId;
+                            insuranceProviderDocument.InsurerId = insuranceProvider.Id;
                             insuranceProviderDocument.DocumentName = file.DocumentName;
                             insuranceProviderDocument.DocumentPath = documentPath;
                             insuranceProviderDocument.IsActive = true;
-                            insuranceProviderDocument.CreatedDate = insuranceProviderDocument.ModifiedDate = DateTime.UtcNow;
+                            insuranceProviderDocument.CreatedBy = insuranceProviderDocument.ModifiedBy = insuranceProvider.InsurerName;
+                            insuranceProviderDocument.CreatedDate = DateTime.UtcNow;
+                            insuranceProviderDocument.ModifiedDate = DateTime.UtcNow;
 
                             insuranceProviderDocuments.Add(insuranceProviderDocument);
                         }

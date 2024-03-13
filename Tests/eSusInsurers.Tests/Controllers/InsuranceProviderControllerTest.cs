@@ -1,9 +1,8 @@
 ﻿using eSusInsurers.Controllers;
-using eSusInsurers.Models;
+using eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider;
 using eSusInsurers.Services.Interfaces;
 using FakeItEasy;
 using FluentAssertions;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Tynamix.ObjectFiller;

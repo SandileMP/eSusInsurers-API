@@ -1,4 +1,4 @@
-﻿using eSusInsurers.Models;
+﻿using eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider;
 
 namespace eSusInsurers.Services.Interfaces
 {
