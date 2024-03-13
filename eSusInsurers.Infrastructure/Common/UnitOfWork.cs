@@ -1,7 +1,6 @@
-﻿using eSusInsurers.Domain.Models;
+﻿using eSusInsurers.Domain.Entities;
 using eSusInsurers.Infrastructure.Interfaces;
 using eSusInsurers.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace eSusInsurers.Infrastructure.Common
@@ -11,24 +10,31 @@ namespace eSusInsurers.Infrastructure.Common
         private readonly esusinsurer_nonprodContext _context;
         private IInsuranceProviderRepository _insuranceProviderRepository;
         private InsuranceProviderDocumentRepository _insuranceProviderDocumentRepository;
+        private IUserRepository _userRepository;
+        private IUserTypeRepository _userTypeRepository;
+        private IEmailTemplateRepository _emailTemplateRepository;
 
         public UnitOfWork(esusinsurer_nonprodContext context)
         {
             try
             {
-
                 _context = context;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                throw;
             }
         }
 
         public IInsuranceProviderRepository InsuranceProviderRepository => _insuranceProviderRepository ??= new InsuranceProviderRepository(_context);
 
         public IInsuranceProviderDocumentRepository InsuranceProviderDocumentRepository => _insuranceProviderDocumentRepository ??= new InsuranceProviderDocumentRepository(_context);
+
+        public IUserRepository UserRepository => _userRepository ??= new UserRepository(_context);
+
+        public IUserTypeRepository UserTypeRepository => _userTypeRepository ??= new UserTypeRepository(_context);
+
+        public IEmailTemplateRepository EmailTemplateRepository => _emailTemplateRepository ??= new EmailTemplateRepository(_context);
 
         public void SaveChanges()
             => _context.SaveChanges();

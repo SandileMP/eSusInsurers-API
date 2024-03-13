@@ -1,5 +1,8 @@
-﻿using eSusInsurers.Common.Logging;
+﻿using EmailService.Interfaces;
+using EmailService.Services;
+using eSusInsurers.Common.Logging;
 using eSusInsurers.ConfigServices;
+using eSusInsurers.Helpers;
 using eSusInsurers.Services.Implementations;
 using eSusInsurers.Services.Interfaces;
 using FluentValidation;
@@ -59,6 +62,12 @@ namespace eSusInsurers
 
             //Register services
             services.AddTransient(typeof(IInsuranceProviderService), typeof(InsuranceProviderService));
+            services.AddTransient(typeof(IUserService), typeof(UserService));
+            services.AddTransient<ITokenService, TokenService>();
+            services.AddTransient<IDateTime, DateTimeService>();
+            services.AddTransient<IUpdateNotificationTemplate, UpdateNotificationTemplate>();
+            services.AddTransient<IEmailService, Services.Implementations.EmailService>();
+            services.AddTransient<FireForget>();
 
             return services;
         }

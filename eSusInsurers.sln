@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eSusInsurers.Tests", "Tests\eSusInsurers.Tests\eSusInsurers.Tests.csproj", "{D1166486-081D-46FE-B3BE-20474ED85073}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService", "ExternalIntegrations\EmailService\EmailService.csproj", "{170ADA43-3095-4C70-B449-F5F84C90D134}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{D1166486-081D-46FE-B3BE-20474ED85073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1166486-081D-46FE-B3BE-20474ED85073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1166486-081D-46FE-B3BE-20474ED85073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{170ADA43-3095-4C70-B449-F5F84C90D134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170ADA43-3095-4C70-B449-F5F84C90D134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170ADA43-3095-4C70-B449-F5F84C90D134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170ADA43-3095-4C70-B449-F5F84C90D134}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{5427A265-BBB5-4A91-8E90-412B61742B53} = {4435653D-63AA-4068-B531-584CE6ED4CF9}
 		{D153529F-488A-4913-BAA4-2420BD1354DB} = {8A1D4174-9EC1-41F0-91EB-88C4AC0E83DE}
 		{D1166486-081D-46FE-B3BE-20474ED85073} = {8A1D4174-9EC1-41F0-91EB-88C4AC0E83DE}
+		{170ADA43-3095-4C70-B449-F5F84C90D134} = {4435653D-63AA-4068-B531-584CE6ED4CF9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2D33CC4-7A28-4F8C-BCCE-79D6B23F8B91}

@@ -1,12 +1,16 @@
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using AzureIntegrations.API;
+using EmailService;
 using eSusFarmInternal.API;
 using eSusInsurers;
 using eSusInsurers.ConfigServices;
 using eSusInsurers.Infrastructure;
 using eSusInsurers.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +22,37 @@ var _env = builder.Environment;
 
 var configuration = builder.Services.AddEnvironmentVariables(_env);
 
-builder.Services.AddWebApiServices(configuration)
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+
+// Adding Jwt Bearer
+.AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ClockSkew = TimeSpan.Zero,
+
+        ValidAudience = configuration["JWT:ValidAudience"],
+        ValidIssuer = configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
+    };
+});
+
+
+builder.Services
+                .AddWebApiServices(configuration)
                 .AddApplicationServices(configuration)
+                .AddEmailService(configuration)
                 .AddInfrastructureServices(configuration, _env)
                 .AddAzureIntegrationServices(configuration)
                 .AddeSusFarmInternalServices(configuration);
@@ -63,6 +96,7 @@ app.UseSwaggerUI(options =>
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

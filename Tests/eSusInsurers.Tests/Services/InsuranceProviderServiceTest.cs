@@ -7,7 +7,7 @@ using eSusFarmInternal.API.Models;
 using eSusInsurers.Common.Logging;
 using eSusInsurers.Domain.Entities;
 using eSusInsurers.Infrastructure.Common;
-using eSusInsurers.Models;
+using eSusInsurers.Models.InsuranceProviders.CreateInsuranceProvider;
 using eSusInsurers.Services.Implementations;
 using eSusInsurers.Services.Interfaces;
 using FakeItEasy;
